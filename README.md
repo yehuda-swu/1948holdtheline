@@ -1,34 +1,26 @@
-# 1948: Hold the Line
+# 1948: Hold the Line | Version 5
 
-Version 4 | StandWithUs UK Explore
+A standalone, interactive educational strategy game by StandWithUs UK and Explore.
 
-## What is new
+## What changed
 
-The game now focuses on one clear sequence: read the historical event, select a front on the map, use up to two orders, and resolve the chapter.
+* Full welcome screen and a clear three step guide.
+* Choose one front and make one strategic decision per chapter.
+* Immediate chapter result after clicking an action.
+* A prominent Restart Game control with confirmation.
+* Improved mobile controls and shorter on screen instructions.
+* The eight chapter historical timeline, source notes, original logos and classroom mode are retained.
 
-A live status bar displays available manpower, weapons, supplies and remaining moves. It remains visible while the player scrolls.
+## Update an existing GitHub Pages website
 
-The command panel displays three actions: send forces, fortify and a special action that changes with the historical chapter. The actions show their effects and resource costs.
+1. Open the ZIP and extract `index.html`.
+2. In your existing GitHub repository, use Add file > Upload files.
+3. Upload `index.html` to the root folder, replacing the existing `index.html`.
+4. Commit the change. Do not upload the HTML file named with a version suffix instead.
 
-The longer historical record, military figures and command log are available through an optional section. Both Student and Classroom modes remain available. The historical event cards and all eight chapters are preserved.
+Suggested commit message: Simplify gameplay and add a welcome screen
 
-Resource counters are simulated game units and must not be interpreted as historical soldier or weapon totals.
+Optional Git command:
+`git add index.html && git commit -m "Simplify gameplay and add a welcome screen" && git push origin main`
 
-## Publish the update using GitHub
-
-1. Extract the downloaded ZIP file.
-2. Open your existing `yehuda-swu/1948holdtheline` repository on GitHub.
-3. Choose Add file, then Upload files.
-4. Upload the included `index.html` file. It must replace the existing `index.html` in the root of the repository.
-5. Click Commit changes.
-6. Once GitHub Pages has published the update, refresh the game website. You may need a forced refresh if the browser is showing an older version.
-
-Suggested commit message:
-
-`Simplify commands and add a live resources bar`
-
-The package is self contained: no additional files need to be uploaded for the core game or the two embedded logos. Optional archive photographs may load from Wikimedia Commons when connected to the internet.
-
-## Tested
-
-Browser tests covered the resource bar, action costs, changing front selections, Student and Classroom modes, event cards, eight chapters and final score. Desktop, tablet and mobile layout checks covered viewport widths from 320 pixels to 1366 pixels.
+Historical dates and events are real. All gameplay forces and battle outcomes are illustrative and not historical inventories or reconstructions.
