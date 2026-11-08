@@ -277,7 +277,48 @@ button.action:disabled{opacity:.46;cursor:not-allowed}
 .v7-demo-link:hover{background:rgba(65,157,186,.32);color:#fff}
 .v7-action-tip{padding:8px 0 11px;color:#4b6573;font-size:12px}
 .v7-action-tip button{border:none;background:none;color:#0873a8;text-decoration:underline;font-weight:800;cursor:pointer;padding:2px 4px}
-</style></head><body>
+</style><style>
+
+/* VERSION 8: clear mission, stronger game balance and named commanders */
+.v8-name-entry{background:rgba(7,32,49,.72);border:1px solid rgba(136,196,214,.29);padding:16px 18px;border-radius:14px;max-width:480px;margin:21px 0 16px;color:#eef7fd;display:flex;flex-direction:column;gap:7px}
+.v8-name-entry label{font-size:11px;letter-spacing:.09em;font-weight:900}.v8-name-entry label span{font-weight:400;letter-spacing:0;color:#a6c7d2;margin-left:7px}
+.v8-name-entry input{border:1px solid #96a9be;border-radius:9px;background:#f7fbff;color:#132f43;font-size:16px;padding:13px 14px;width:100%;min-height:47px;outline-offset:3px}.v8-name-entry input:focus{outline:3px solid #53b9ed}.v8-name-entry small{font-size:11px;line-height:1.4;color:#b8cad5}
+.v8-home-board-button{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#b9e9ff;border:1px solid #477e95;border-radius:8px;font-size:12px;font-weight:800;padding:11px 17px;margin-top:10px;cursor:pointer}
+.v8-home-board{margin:16px 20px 6px;background:#0b283b;border:1px solid rgba(161,216,229,.26);color:#eaf5fc;border-radius:14px;padding:20px 22px;scroll-margin-top:12px}
+.v8-board-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.v8-board-top small{font-size:10px;font-weight:900;letter-spacing:.11em;color:#83d6ed}.v8-board-top h3{font-size:21px;color:#fff;margin:4px 0 0}.v8-board-top>span{font-size:11px;color:#b3c9d8}.v8-home-board>p{font-size:11px;color:#acc3d0;margin:13px 0 0}
+.v8-board-row{display:grid;grid-template-columns:35px minmax(0,1fr) auto;align-items:center;gap:10px;background:rgba(255,255,255,.045);padding:10px 12px;border-radius:8px;margin:5px 0;font-size:13px}
+.v8-board-row .rank{color:#f9c85d;font-weight:900}.v8-board-row strong{overflow-wrap:anywhere}.v8-board-row .v8-points{font-weight:900;color:#f8dc88;white-space:nowrap}
+.v8-empty{font-size:13px;color:#b8ccda;padding:13px 2px}
+.v8-player-strip{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:8px 0 0;color:#fff;font-weight:800;font-size:12px}.v8-player-strip span{background:#164c68;border-radius:6px;padding:7px 12px}
+.v8-board-trigger{border:1px solid #568399;background:#133c51;color:#eefbff;border-radius:8px;cursor:pointer;padding:9px 13px;font-size:12px;font-weight:850;white-space:nowrap}
+/* Keep focus to a single mission rather than six simultaneous decisions. */
+#frontButtons,#v7InGameExample,.v7-action-tip,#v5Task,.v5-guide-inline,.front-options,.front-chip{display:none!important}
+.map-card .front-node:not(.selected){opacity:.24;pointer-events:none;cursor:default}.map-card .front-node.selected{filter:drop-shadow(0 0 8px #fcb865)}
+#commandPanel .orders-header .mini-label{color:#1775aa}
+.v8-selected-note{background:#e4f4fb;border:1px solid #c2e2ef;padding:11px 13px;color:#154e68;font-size:13px;line-height:1.45;border-radius:10px;margin:12px 0}
+.v8-target{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#f2f8fc;border:1px solid #c9e0ec;padding:12px;border-radius:9px;margin:7px 0 12px;color:#16394d}
+.v8-target strong{font-size:19px;color:#0c4567}.v8-target .danger{color:#ab3731}.v8-target small{font-size:11px;color:#4a6979}
+.v8-preview{font-size:12px;font-weight:800;margin-top:5px;padding:7px 9px;background:#edf8ef;color:#24623f;border-radius:7px;max-width:max-content}
+.v8-preview.risk{background:#fff3e8;color:#a34e20}
+#actions .action{border-width:2px;min-height:115px!important;grid-template-rows:auto auto auto!important;grid-template-columns:44px minmax(0,1fr) 112px!important}
+#actions .action .v8-preview{grid-column:2/4!important;grid-row:3!important;display:inline-block;min-width:0;white-space:normal;max-width:100%;line-height:1.4;align-self:start}
+#actions .action .action-cost{grid-row:1/3!important}
+#actions .action .action-icon{grid-row:1/3!important}#actions .action:hover:not(:disabled){border-color:#00a6d6;box-shadow:0 5px 15px rgba(17,79,110,.18)}
+#actions .action-name{font-size:16px}.v8-game-note{font-size:12px;color:#547080;margin-top:5px}.v8-badge{display:inline-block;font-size:11px;font-weight:900;border-radius:999px;background:#e2f6e9;color:#12552d;padding:5px 10px;margin:8px 0}
+.v8-score-pill{color:#fff;font-size:12px;font-weight:850;background:#094864;border-radius:9px;padding:10px 14px;white-space:nowrap}
+.v8-result-top{background:linear-gradient(125deg,#0d344b,#095e7a);border-radius:11px;padding:19px;color:#fff;margin-bottom:17px}.v8-result-top small{font-size:11px;letter-spacing:.12em;color:#b7dce9}.v8-result-top h2{color:#fff;margin:7px 0;font-size:27px}.v8-result-top p{font-size:14px;color:#e1f5ff;margin:7px 0 0}
+.v8-result-math{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:13px;border-radius:10px;padding:18px;background:#eef5fa;margin:13px 0}.v8-result-math div{display:flex;flex-direction:column;align-items:center}.v8-result-math b{font-size:27px;color:#123e5a}.v8-result-math span{font-size:10px;color:#526e80}.v8-result-math .v8-sign{font-size:25px;color:#628ba2}
+.v8-result-difference{background:#e8f6ed;border-left:4px solid #359460;padding:12px 15px;margin:15px 0;border-radius:5px;font-size:14px;color:#165c3c}.v8-result-difference.risk{background:#fff1e8;border-color:#df8f44;color:#874018}
+.v8-modal-button{width:100%;margin-top:12px;min-height:54px!important;font-size:16px!important;font-weight:900!important}
+.v8-end-story{margin:17px 0;padding:18px 20px;background:#f0f5fa;border:1px solid #d7e5ee;border-radius:12px;color:#263f51;max-height:48vh;overflow:auto}
+.v8-end-story h3{color:#0d4667;font-size:21px;margin:5px 0 12px}.v8-end-story h4{color:#144e6f;font-size:14px;margin:15px 0 4px}.v8-end-story p{font-size:13px;line-height:1.62;margin:5px 0 11px}
+.v8-end-bar{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-bottom:10px}.v8-end-bar>div{background:#f1f6f9;padding:10px 13px;border-radius:9px;flex:1;text-align:center}.v8-end-bar strong{display:block;font-size:23px;color:#144e6d}.v8-end-bar span{font-size:11px;color:#59788b}
+.v8-end-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}.v8-end-actions>button{flex:1;min-width:140px;padding:12px;border-radius:9px;font-weight:900}
+.v8-board-modal-list{color:#17394e}.v8-board-modal-list .v8-board-row{background:#edf5fa}.v8-board-modal-list .v8-board-row .v8-points{color:#175f7e}.v8-muted-note{color:#60788a;font-size:11px;line-height:1.4}
+@media(max-width:700px){.v8-name-entry{margin:14px 0}.v8-home-board{margin:14px 8px;padding:15px}.v8-board-top{align-items:flex-start;flex-direction:column}.v8-board-top h3{font-size:19px}.v8-board-top>span{display:none}.v8-player-strip{padding:3px 0 12px}.v8-end-story{max-height:42vh}.v8-end-actions>button{flex:1 1 100%}.v8-result-math{gap:7px}.v8-result-math b{font-size:21px}}
+
+</style>
+</head><body>
 <section class="v5-welcome v6-welcome" id="welcomeScreen" aria-labelledby="welcomeTitle">
   <div class="v6-home-shell">
     <div class="v6-home-top">
@@ -291,13 +332,13 @@ button.action:disabled{opacity:.46;cursor:not-allowed}
         <h1 id="welcomeTitle"><em>1948</em><span>HOLD THE LINE<span class="v6-title-stop">.</span></span></h1>
         <p class="v6-home-tagline">Six fronts. Limited resources.<br><strong>One decision can change the battle.</strong></p>
         <div class="v6-home-story"><span class="v6-flash-label">THE SITUATION</span><p>Fighting has begun. The roads to Jerusalem are under threat. More battles are coming. You are in command. Where will you send help?</p></div>
-        <div class="v6-cta-area">
+        <div class="v8-name-entry"><label for="v8PlayerName">YOUR COMMANDER NAME <span>optional</span></label><input id="v8PlayerName" type="text" autocomplete="nickname" maxlength="24" placeholder="Enter your name or nickname" aria-describedby="v8NameHelp"><small id="v8NameHelp">Your name will appear in your results and on this browser's leaderboard.</small></div><div class="v6-cta-area">
           <button class="v6-main-start" id="startStudent" type="button">START YOUR MISSION <span aria-hidden="true">➜</span></button>
           <button class="v6-classroom-start" id="startClassroom" type="button">CLASSROOM MODE <span aria-hidden="true">↗</span></button>
         </div>
         <div id="v7SoundHint" class="v7-sound-hint" role="status" aria-live="polite">Subtle music will begin on the welcome screen when your browser allows it.</div>
   <div class="v5-continue-wrap hidden" id="continueWrap"><button class="v5-continue" id="continueGame" type="button">Continue saved mission →</button><span id="continueDetail"></span></div>
-        <div class="v6-home-links"><button id="homeLearn" type="button">Explore the historical timeline ↗</button><span>Historical events are real. Battle outcomes are simulated.</span></div>
+        <button class="v8-home-board-button" type="button" id="v8HomeBoardButton">★ View leaderboard and scores</button><div class="v6-home-links"><button id="homeLearn" type="button">Explore the historical timeline ↗</button><span>Historical events are real. Battle outcomes are simulated.</span></div>
       </div>
       <div class="v6-map-pane" aria-hidden="true">
         <div class="v6-pane-top"><span><span class="v6-signal-dot"></span> LIVE STRATEGIC MAP</span><span>FILE 1948 / 01</span></div>
@@ -343,7 +384,7 @@ button.action:disabled{opacity:.46;cursor:not-allowed}
   </div>
   <div class="v7-demo-foot"><strong>Remember:</strong> You make one decision per chapter. Your action helps one front, but other fronts may still come under pressure. The numbers are game scores, not actual historical troop totals.</div>
 </div>
-  <div class="v7-countries" id="v7HomeFlags" aria-label="Flags of states involved in the 1948 war"></div>
+  <section class="v8-home-board" aria-label="Leaderboard for this browser"><div class="v8-board-top"><div><small>LOCAL LEADERBOARD</small><h3>Top Commanders</h3></div><span>Updates after each campaign</span></div><div id="v8HomeBoard"></div><p>Scores are saved in this browser. They are not shared across devices.</p></section><div class="v7-countries" id="v7HomeFlags" aria-label="Flags of states involved in the 1948 war"></div>
   <div class="v6-home-ticker"><div><span>● INCOMING TRANSMISSION</span><span>NOVEMBER 1947 · ROADS UNDER FIRE</span><span>APRIL 1948 · CZECH WEAPONS ARRIVE</span><span>MAY 1948 · MULTIPLE ARMIES ADVANCE</span><span>1949 · ARMISTICES</span></div></div>
   </div>
 </section>
@@ -898,4 +939,212 @@ document.addEventListener('DOMContentLoaded',()=>{
  const homeEx=document.getElementById('v7ShowExample');if(homeEx)homeEx.onclick=()=>document.getElementById('v7Example').scrollIntoView({behavior:'smooth',block:'center'});
  const gameEx=document.getElementById('v7InGameExample');if(gameEx)gameEx.onclick=showHelp;
 });
-</script></body></html>
+</script><script>
+
+/* VERSION 8: one achievable mission each round, with no invisible penalties. */
+const V8_BOARD_KEY='swu1948boardV8';
+const V8_MISSIONS=['jerusalem','jerusalem','coast','jerusalem','jerusalem','galilee','negev','negev'];
+const V8_TRUCES=new Set([3,5]);
+const v8OldNewGame=newGame;
+newGame=function(){
+ const s=v8OldNewGame();
+ s.version=8;s.retryUsed=false;s.retrySnapshot=null;
+ s.stock={manpower:14,weapons:12,supplies:12};
+ s.orders=1;s.playerName='Commander';s.missionChapter=0;s.missionBasePower=6;
+ s.missionWins=0;s.missionPoints=0;s.missionFinishedCount=0;
+ return s;
+};
+const v8OldLoad=load;
+load=function(){const s=v8OldLoad();return s&&s.version===8?s:newGame();};
+function v8Name(){return String(state?.playerName||'Commander').trim().slice(0,24)||'Commander';}
+function v8Focus(){return V8_MISSIONS[state?.chapter||0]||'jerusalem';}
+function v8Hydrate(){
+ if(!state)return;
+ if(typeof state.playerName!=='string')state.playerName='Commander';
+ if(!Number.isFinite(state.missionPoints))state.missionPoints=0;
+ if(!Number.isFinite(state.missionWins))state.missionWins=0;
+ if(!Number.isFinite(state.missionFinishedCount))state.missionFinishedCount=0;
+ if(!state.stock||typeof state.stock!=='object')state.stock={manpower:14,weapons:12,supplies:12};
+ if(state.missionChapter!==state.chapter){state.missionChapter=state.chapter;state.missionBasePower=strength(v8Focus());}
+ if(!Number.isFinite(state.missionBasePower))state.missionBasePower=strength(v8Focus());
+ state.selected=v8Focus();
+ if(state.lastReport)state.orders=0;else if(!Number.isFinite(state.orders)||state.orders>1)state.orders=1;
+}
+function v8Threat(){
+ if(V8_TRUCES.has(state.chapter))return 0;
+ return Math.min(active().threats[v8Focus()]||0,state.missionBasePower+(state.chapter>=6?3:4));
+}
+function v8BoardRead(){try{let b=JSON.parse(localStorage.getItem(V8_BOARD_KEY)||'[]');return Array.isArray(b)?b.filter(x=>x&&typeof x.name==='string'&&Number.isFinite(x.score)).sort((a,b)=>b.score-a.score||a.when-b.when).slice(0,30):[];}catch(e){return [];}}
+function v8BoardWrite(){
+ if(state.leaderboardSaved)return;
+ const entry={id:String(Date.now())+Math.random().toString(36).slice(2,7),name:v8Name(),score:state.missionPoints||0,wins:state.missionWins||0,when:Date.now(),mode:state.mode};
+ const list=v8BoardRead();list.push(entry);list.sort((a,b)=>b.score-a.score||a.when-b.when);
+ let persisted=false;try{localStorage.setItem(V8_BOARD_KEY,JSON.stringify(list.slice(0,30)));persisted=true;}catch(e){}
+ state.leaderboardStored=persisted;state.leaderboardSaved=true;
+ save();
+}
+function v8Rows(onDark=true,includeLive=true){
+ const entries=v8BoardRead().slice(0,5);
+ let rows=entries.map((r,i)=>`<div class="v8-board-row"><span class="rank">${i+1}</span><strong>${esc(r.name)}</strong><span class="v8-points">${r.score} pts</span></div>`).join('');
+ if(includeLive&&state&&!state.finished&&(state.started||state.chapter>0))rows+=`<div class="v8-board-row" style="border:1px dashed ${onDark?'#66cdeb':'#2d92b1'}"><span class="rank">●</span><strong>${esc(v8Name())} · current game</strong><span class="v8-points">${state.missionPoints||0} pts</span></div>`;
+ return rows||'<div class="v8-empty">No completed campaigns yet. Be the first to set a score.</div>';
+}
+function v8BoardUpdate(){const home=$('v8HomeBoard');if(home)home.innerHTML=v8Rows(true,false);const hud=$('v8PlayerStrip');if(hud)hud.innerHTML=`<span>COMMANDER: ${esc(v8Name())}</span><span>SCORE: ${state.missionPoints||0} / 100</span><button type="button" class="v8-board-trigger" id="v8OpenBoard">★ Leaderboard</button>`;const btn=$('v8OpenBoard');if(btn)btn.onclick=v8OpenBoard;}
+function v8OpenBoard(){mopen(`<div class="modal-eyebrow">LOCAL LEADERBOARD</div><h2>Top Commanders</h2><p>Scores are saved automatically when a campaign ends.</p><div class="v8-board-modal-list">${v8Rows(false,true)}</div><p class="v8-muted-note">This scoreboard is saved in this browser only. Other devices and browsers have separate scores.</p><div class="modal-actions"><button class="primary" id="v8BoardClose" type="button">Back to mission</button></div>`);$('v8BoardClose').onclick=hideModal;}
+const v8OldStart=v5Start;
+v5Start=function(mode){
+ const userEntered=String($('v8PlayerName')?.value||'').trim().replace(/\s+/g,' ').slice(0,24)||'Commander';
+ v8OldStart(mode);
+ state.playerName=userEntered;state.missionChapter=state.chapter;state.missionBasePower=strength(v8Focus());
+ state.missionWins=0;state.missionPoints=0;state.missionFinishedCount=0;state.leaderboardSaved=false;state.retryUsed=false;state.retrySnapshot=null;
+ v8Hydrate();save();render();
+};
+const v8OldGo=goChapter;
+goChapter=function(i,first=false){v8OldGo(i,first);state.missionChapter=i;state.missionBasePower=strength(v8Focus());state.orders=1;state.retryUsed=false;state.retrySnapshot=null;state.selected=v8Focus();v8Hydrate();render();save();};
+const v8OldShowWelcome=v5ShowWelcome;
+v5ShowWelcome=function(){v8OldShowWelcome();v8BoardUpdate();const field=$('v8PlayerName');if(field&&!field.value&&state.playerName!=='Commander')field.value=state.playerName;};
+/* Lock the mission front. The rest of the map is contextual and never silently penalises players. */
+select=function(id){if(id!==v8Focus()){const note=$('v8MissionNote');if(note)note.textContent='Your objective is the highlighted mission front. The other regions show historical context.';return;}state.selected=id;renderMap();renderOrders();save();};
+const v8OldActions=actions;
+actions=function(){const list=v8OldActions();
+ list[0].text='Add 3 defence now and keep the extra forces';
+ list[1].text='Add 4 lasting defence to this front';
+ if(list[2]){
+  const texts={convoy:'Add 4 defence to Jerusalem for this battle',air:'Add 5 defence using air support',mobilise:'Gain 4 manpower for a later chapter',counter:'Add 3 forces and recover ground',armour:'Add 6 defence using armoured support'};
+  list[2].text=texts[active().special]||list[2].text;
+ }
+ return list;
+};
+function v8Projected(a){
+ const power=strength(v8Focus()), spec=active().special;
+ if(a.id==='reinforce')return power+3;
+ if(a.id==='fortify')return power+4;
+ if(spec==='convoy')return power+4;
+ if(spec==='air')return power+5;
+ if(spec==='counter')return power+3;
+ if(spec==='armour')return power+6;
+ return power;
+}
+const v8OldRenderOrders=renderOrders;
+renderOrders=function(){v8Hydrate();v8OldRenderOrders();
+ const target=v8Focus(),isTruce=V8_TRUCES.has(state.chapter),threat=v8Threat(),power=strength(target);
+ $('targetName').textContent=FRONTS[target].name;
+ $('ordersCount').textContent=state.lastReport?'COMPLETE':'CHOOSE ONE';
+ const h=document.querySelector('#commandPanel .orders-header .mini-label');if(h)h.textContent='YOUR MISSION FRONT';
+ $('targetDesc').textContent=`Your objective is to ${isTruce?'prepare this front for the next battle':'hold this front when the battle is resolved'}.`;
+ $('threatLine').innerHTML=isTruce?'<div class="v8-target"><strong>TRUCE: No attack this chapter</strong><small>Choose any action to prepare. You earn 5 points for preparing.</small></div>':`<div class="v8-target"><span>YOUR DEFENCE <strong>${power}</strong></span><span>ENEMY THREAT <strong class="danger">${threat}</strong></span><small>${power>=threat?'Holding at present':'Choose an action to reach or exceed the threat'}</small></div>`;
+ $('actions').querySelectorAll('[data-action]').forEach(b=>{
+  const a=actions().find(x=>x.id===b.dataset.action);if(!a)return;
+  let predicted=v8Projected(a),passing=predicted>=threat;
+  const preview=document.createElement('span');preview.className='v8-preview'+(!passing&&!isTruce?' risk':'');
+  preview.textContent=isTruce?(a.id==='special'?'Gain more manpower for later':'Prepare stronger defences'):passing?`Defence ${power} → ${predicted} · Holds the line`:`Defence ${power} → ${predicted} · Still at risk`;
+  b.appendChild(preview);
+  b.setAttribute('aria-label',a.name+'. '+a.text+'. '+preview.textContent);
+ });
+};
+const v8OldRender=render;
+render=function(){v8Hydrate();v8OldRender();
+ const target=v8Focus(),isTruce=V8_TRUCES.has(state.chapter);
+ const focus=FRONTS[target].name;
+ const goal=$('v6MissionGoal');if(goal)goal.textContent=isTruce?`A truce is in effect. Prepare ${focus} for the next fighting. Any action earns points.`:`DEFEND ${focus}. You only need to protect this highlighted front this chapter.`;
+ const hint=$('v6MissionHint');if(hint)hint.textContent=isTruce?'Choose a preparation action and receive 5 points.':'Choose a move that takes your defence to at least the enemy threat. You can see the result before clicking.';
+ const steps=document.querySelector('#v6Mission .v6-mission-steps');if(steps)steps.innerHTML='<span><b>1</b> Read the highlighted mission</span><span class="v6-step-arrow">→</span><span><b>2</b> Choose ONE action</span><span class="v6-step-arrow">→</span><span><b>3</b> See your score</span>';
+ const maphead=document.querySelector('.map-card .map-top');
+ const mapTitle=document.querySelector('.map-card .section-title');if(mapTitle)mapTitle.textContent='Your mission is highlighted on the map';
+ const t=document.querySelector('.map-card .map-top p');if(t)t.textContent='Only the highlighted front affects your score. Other markers provide historical context.';
+ v8BoardUpdate();
+};
+/* One optional second attempt teaches the player why an action fell short. */
+const v8OldAct=act;
+act=function(id){
+ if(!state.lastReport&&state.orders>0&&!state.retrySnapshot&&!state.retryUsed){
+  state.retrySnapshot={stock:{...state.stock},fronts:JSON.parse(JSON.stringify(state.fronts)),log:[...state.log],points:state.missionPoints||0,wins:state.missionWins||0,finishedCount:state.missionFinishedCount||0};
+ }
+ v8OldAct(id);
+};
+function v8Retry(){
+ const before=state.retrySnapshot;if(!before||state.retryUsed)return;
+ state.stock={...before.stock};state.fronts=JSON.parse(JSON.stringify(before.fronts));state.log=[...before.log];
+ state.missionPoints=before.points;state.missionWins=before.wins;state.missionFinishedCount=before.finishedCount;
+ state.lastReport=null;state.orders=1;state.latestAction=null;state.retryUsed=true;state.retrySnapshot=null;
+ if(state.reports.length)state.reports.pop();
+ hideModal();save();render();
+ const panel=$('commandPanel');if(panel)panel.scrollIntoView({behavior:'smooth',block:'center'});
+}
+/* One battle per chapter. Clear scoring and achievable victory. */
+resolve=function(){
+ if(state.finished||state.lastReport)return;
+ const focus=v8Focus(),threat=v8Threat(),power=strength(focus),isTruce=V8_TRUCES.has(state.chapter);
+ const hold=isTruce||power>=threat;
+ const pts=isTruce?5:hold?15:0;
+ if(!hold)state.fronts[focus].status=Math.max(1,state.fronts[focus].status-1);
+ else if(!isTruce)state.fronts[focus].status=2;
+ if(!isTruce&&hold)state.missionWins=(state.missionWins||0)+1;
+ state.missionPoints=(state.missionPoints||0)+pts;
+ state.missionFinishedCount=(state.missionFinishedCount||0)+1;
+ state.orders=0;
+ const r={chapter:state.chapter,focus,points:pts,defence:power,threat,truce:isTruce,held:hold,results:isTruce?[]:[{front:focus,outcome:hold?'held':'contested',text:hold?'Mission held':'A setback',defence:power,threat}],bad:hold?0:1};
+ state.lastReport=r;state.reports.push(r);
+ state.log.unshift(isTruce?`Chapter ${state.chapter+1}: forces prepared.`:hold?`Chapter ${state.chapter+1}: ${FRONTS[focus].name} held.`:`Chapter ${state.chapter+1}: ${FRONTS[focus].name} under pressure.`);
+ state.log=state.log.slice(0,6);save();render();showReport();
+};
+showReport=function(){
+ const r=state.lastReport;if(!r)return;
+ const focus=FRONTS[r.focus].name;
+ const title=r.truce?'SUPPLIES AND FORCES READY':r.held?'MISSION SUCCESS: THE LINE HOLDS':'A SETBACK, NOT THE END';
+ const description=r.truce?'The truce gave you time to prepare for the next campaign.':r.held?`Your decision gave ${focus} enough defence to hold the mission front.`:`${focus} remained under pressure. You can still win the campaign in later chapters.`;
+ const calculation=r.truce?'<div class="v8-result-difference">No attack this chapter. You earned 5 points for preparing.</div>':`<div class="v8-result-math"><div><b>${r.defence}</b><span>YOUR DEFENCE</span></div><div class="v8-sign">${r.held?'≥':'<'}</div><div><b>${r.threat}</b><span>ENEMY THREAT</span></div></div><div class="v8-result-difference ${r.held?'':'risk'}">${r.held?'Your defence was strong enough. Well played.':'Your defence was too low. A different action could have helped.'}</div>`;
+ mopen(`<div class="v8-result-top"><small>CHAPTER ${state.chapter+1} OF 8 · BATTLE REPORT</small><h2>${title}</h2><p>${esc(description)}</p></div>
+ ${calculation}<div class="v8-end-bar"><div><strong>+${r.points}</strong><span>POINTS THIS CHAPTER</span></div><div><strong>${state.missionPoints}/100</strong><span>YOUR TOTAL SCORE</span></div><div><strong>${state.missionWins}/6</strong><span>BATTLES HELD</span></div></div>
+ <div class="v6-why"><strong>THE REAL HISTORY</strong>${esc(active().brief)}</div>
+ <p class="v8-muted-note">Only this mission front was scored. Other fronts cannot cause hidden losses. Combat figures are fictional gameplay values.</p>
+ ${!r.held&&!state.retryUsed&&state.retrySnapshot?'<button id="v8RetryBtn" class="v8-board-trigger v8-modal-button" type="button">TRY A DIFFERENT ORDER ↻</button>':''}<button id="v5NextBtn" class="primary v8-modal-button" type="button">${state.chapter===7?'SEE YOUR CAMPAIGN RESULT':'NEXT CHAPTER'} →</button>`);
+ $('v5NextBtn').onclick=()=>{hideModal();if(state.chapter===7)finish();else goChapter(state.chapter+1);};
+ const retry=$('v8RetryBtn');if(retry)retry.onclick=v8Retry;
+};
+function v8HistoricalEnding(){return `<section class="v8-end-story"><h3>What Really Happened</h3><p class="v8-muted-note">Scroll down to read the complete historical outcome.</p>
+ <h4>1947: Partition and the first fighting</h4><p>On 29 November 1947, the United Nations voted to recommend dividing British Mandate Palestine into a Jewish state and an Arab state, with special arrangements for Jerusalem. Jewish leaders accepted the proposal, while Arab leaders rejected it. Fighting between Jewish and Palestinian Arab forces followed before British rule ended.</p>
+ <h4>May 1948: Independence and invasion</h4><p>Israel declared independence on 14 May 1948. The following day, armies from neighbouring Arab states entered the conflict. Israel faced severe shortages of equipment, vulnerable roads and attacks on several fronts. Weapons imported from Czechoslovakia, growing recruitment and the formation of the IDF strengthened its military position over time.</p>
+ <h4>Truces and the military outcome</h4><p>UN truces allowed military reorganisation. Later Israeli operations secured key areas in the Galilee, central regions and the Negev. Israel survived the war and controlled more territory than the 1947 UN partition proposal had allocated to the proposed Jewish state. The 1949 armistice agreements were signed with Egypt on 24 February, Lebanon on 23 March, Jordan on 3 April and Syria on 20 July. These were ceasefire arrangements, not full peace treaties.</p>
+ <h4>Human consequences and unresolved questions</h4><p>Hundreds of thousands of Palestinian Arabs fled or were expelled, creating a major refugee crisis. Jewish residents were also displaced from communities including Jerusalem's Old City. After the war, Jordan controlled the West Bank, including East Jerusalem, while Egypt controlled the Gaza Strip. The status of these territories, refugees and future peace remained unresolved.</p>
+ <p><strong>Remember:</strong> Your result in this game is an alternative strategy exercise. The historical outcome does not change, whether you win or lose.</p></section>`;}
+finish=function(){
+ if(state.finished&&state.leaderboardSaved)return;
+ state.finished=true;
+ const won=(state.missionWins||0)>=4;
+ v8BoardWrite();save();render();
+ mopen(`<div class="v8-result-top"><small>FINAL REPORT · 1949</small><h2>${won?'VICTORY: MISSION ACCOMPLISHED':'CAMPAIGN COMPLETED'}</h2><p>${esc(v8Name())}, you protected ${state.missionWins||0} of 6 mission fronts. ${won?'You have won this campaign.':'You faced setbacks. The game is designed to let you try a different strategy next time.'}</p></div>
+ <div class="v8-end-bar"><div><strong>${state.missionPoints||0}/100</strong><span>FINAL POINTS</span></div><div><strong>${state.missionWins||0}/6</strong><span>BATTLES HELD</span></div><div><strong>${won?'WIN':'TRY AGAIN'}</strong><span>GAME RESULT</span></div></div>
+ <div class="v8-badge">${state.leaderboardStored?'★ Score saved to this browser’s leaderboard':'Your score is shown here. Local storage is unavailable in this browser.'}</div>
+ ${v8HistoricalEnding()}
+ <div class="v8-end-actions"><button class="v8-board-trigger" id="v8FinalBoard" type="button">★ See leaderboard</button><button class="v8-board-trigger" id="v8FinalHistory" type="button">Full timeline</button><button class="primary" id="v8PlayAgain" type="button">PLAY AGAIN ↻</button></div>`,true);
+ $('v8FinalBoard').onclick=v8OpenBoard;
+ $('v8FinalHistory').onclick=showHistory;
+ $('v8PlayAgain').onclick=()=>{hideModal();state=newGame();save();render();v5ShowWelcome();};
+};
+/* Give the player one clear promise on the home screen. */
+const v8OldHelp=showHelp;
+showHelp=function(){mopen(`<button type="button" data-close class="modal-close" aria-label="Close">×</button><div class="modal-eyebrow">HOW TO PLAY · 30 SECONDS</div><h2>Protect the highlighted front.</h2>
+ <p>Each chapter has <strong>one mission</strong>. You do not need to save every front on the map.</p>
+ <ol><li><strong>Read your mission.</strong> The game shows the front you must protect.</li><li><strong>Choose one action.</strong> Each button tells you its cost and whether your defence will hold.</li><li><strong>See the result.</strong> Earn 15 points for a defended front, or 5 points for preparing during a truce.</li></ol>
+ <div class="v8-result-difference">Example: Jerusalem has defence 6 against a threat of 9. Send a convoy to add 4 defence. Now 10 is greater than 9, so Jerusalem holds and you earn 15 points.</div>
+ <p><strong>To win:</strong> Hold at least 4 of the 6 battles. There are 8 chapters in total, including two truces.</p>
+ <p class="v8-muted-note">Manpower, weapons, defence ratings and points are invented game values, not actual troop figures.</p>
+ <div class="modal-actions"><button class="primary" data-close type="button">I'M READY →</button></div>`);
+ $('modalLayer').querySelectorAll('[data-close]').forEach(b=>b.onclick=hideModal);
+};
+/* Keep the welcome example consistent with the simpler scoring rules. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const boardButton=$('v8HomeBoardButton');if(boardButton)boardButton.onclick=()=>$('v8HomeBoard')?.scrollIntoView({behavior:'smooth',block:'center'});
+ const input=$('v8PlayerName');if(input){input.addEventListener('keydown',e=>{if(e.key==='Enter'){$('startStudent')?.click();}});}
+ const header=document.querySelector('header.top');
+ const hud=$('liveHud');if(hud){const strip=document.createElement('div');strip.className='v8-player-strip';strip.id='v8PlayerStrip';hud.insertAdjacentElement('afterend',strip);}
+ const demoFoot=document.querySelector('.v7-demo-foot');if(demoFoot)demoFoot.innerHTML='<strong>Win the game:</strong> Protect the highlighted front in at least 4 of the 6 battle chapters. You will never lose points because another front was attacked in the background.';
+ const homeGuide=document.querySelector('.v6-guide-steps');if(homeGuide)homeGuide.innerHTML='<div><b>01</b><span><strong>READ YOUR MISSION</strong><small>Only the highlighted front counts towards your result.</small></span></div><div><b>02</b><span><strong>CHOOSE ONE ORDER</strong><small>See in advance whether the action will protect your front.</small></span></div><div><b>03</b><span><strong>EARN POINTS AND ADVANCE</strong><small>Hold 4 of 6 battles to win. There are also two truces.</small></span></div>';
+ const caption=document.querySelector('.v6-home-story p');if(caption)caption.textContent='Your objective is simple: protect one highlighted front each chapter. Choose a single action, earn points and work towards victory.';
+ const gameHeader=document.querySelector('.map-card .panel-head');if(gameHeader){const note=document.createElement('p');note.className='v8-game-note';note.id='v8MissionNote';note.textContent='Only your highlighted front affects the score. Other fronts are historical context.';gameHeader.appendChild(note);}
+ v8Hydrate();render();v8BoardUpdate();
+});
+
+</script>
+</body></html>
